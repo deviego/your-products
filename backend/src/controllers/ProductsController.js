@@ -1,7 +1,7 @@
 import User from "../models/User";
-import Repository from "../models/Repository";
+import Product from "../models/Products.js";
 
-class RepositoriesController {
+class ProductController {
   async index(req, res) {
     try {
       const { user_id } = req.params;
@@ -17,13 +17,13 @@ class RepositoriesController {
       if(q) {
         query = { url: {$regex: q}}
       }
-      const repositories = await Repository.find({
+      const products = await Product.find({
         userId: user_id,
         ...query
       });
 
 
-      return res.json(repositories);
+      return res.json(products);
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: "interval server error" });
@@ -34,30 +34,56 @@ class RepositoriesController {
     try {
       const { user_id } = req.params;
       const user = await User.findById(user_id);
-      const { name, url } = req.body;
+      const { name, amount, quantity, description } = req.body;
       if (!user) {
         return res.status(404).json();
       }
 
-      const repository = await Repository.findOne({
+      const product = await Product.findOne({
         userId: user_id,
-        url,
+        name,
       });
-      if (repository) {
+      if (product) {
         return res
           .status(202)
-          .json({ message: `Repository ${name} already exists.` });
+          .json({ message: `${name} already exists.` });
       }
 
-      const newRepository = await Repository.create({
+      const newProduct = await Product.create({
         name,
-        url,
+        amount,
+        quantity,
+        description,
         userId: user_id,
       });
-      return res.status(201).json(newRepository);
+      return res.status(201).json(newProduct);
     } catch (error) {
       console.log(error);
       return res.status(500).json({ error: "interval server error" });
+    }
+  }
+
+  
+  async update(req, res) {
+    try{
+        const {_id} = req.params;
+
+        const product = await Product.findById(_id) 
+
+        if(!product){
+            return res.status(404).json()
+        }
+
+      
+
+      const { name, amount, quantity, description } = req.body;
+      await product.updateOne({ name, amount, quantity, description })
+       res.status(200).json()
+
+
+    }catch(error){
+        console.error(error)
+        return res.status(500).json({error: "interval server error"})
     }
   }
 
@@ -70,15 +96,15 @@ class RepositoriesController {
         return res.status(404).json();
       }
 
-      const repository = await Repository.findOne({
+      const product = await Product.findOne({
         userId: user_id,
         id: _id
       })
 
-      if (!repository) {
+      if (!product) {
         return res.status(404).json();
       }
-      await Repository.findByIdAndDelete({_id: _id})
+      await product.findByIdAndDelete({_id: _id})
       return res.status(200).json()
 
 
@@ -89,4 +115,4 @@ class RepositoriesController {
   }
 }
 
-export default new RepositoriesController();
+export default new ProductController();

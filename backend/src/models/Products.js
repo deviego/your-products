@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema(
             }
         },
          amount:{
-            type: Number,
+            type: String,
             require: true
          },
          quantity:{
@@ -32,4 +32,4 @@ const productSchema = new mongoose.Schema(
      }
 )
 
-export default mongoose.model('product', productSchema)
+export default mongoose.model('Product', productSchema)

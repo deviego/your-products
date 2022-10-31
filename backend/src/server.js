@@ -1,5 +1,4 @@
-import app from './app'
+import app from "./app";
 
-const port = process.env.PORT || 5100
 
-app.listen(port)
+app.listen(process.env.PORT || 5100)
