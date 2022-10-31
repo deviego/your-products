@@ -32,13 +32,18 @@ export default function BasicModal() {
 
   const sendInfo = (e) => {
     e.preventDefault()
+   
+
+    if(name == "" || description === ""|| amount === "" || quantity === 0) {
+      alert("Por favor preencha todos os campos")
+      console.log("tete")
+      return
+    }
+    console.log(name)
+  
   }
 
 
-  if(name === "", description === "", amount === 0,  quantity === 0) {
-    alert("Por favor preencha todos os campos")
-    return
-  }
 
   return (
     <div>
@@ -56,37 +61,48 @@ export default function BasicModal() {
             <input  
             type="text" 
             name='name' 
-            placeholder='Digite o nome do produto' />
-      
+            placeholder='Digite o nome do produto'
+            value={name}
+            onChange={(e) => setName(e.target.value)} />
+          
           
            
             <input  
             type="text"
             name='description'
-            placeholder='Digite o nome do produto' />
+            placeholder='Digite o nome do produto' 
+            value={description}
+            onChange={(e) => setDescription(e.target.value)} />
+
           
         
            
             <input 
-            placeholder='Digite o valor do produto' 
-            type="number" 
+            placeholder='Digite o valor do produto ex:100,00' 
+            type="text" 
             step="0.01" 
             name="quantity" 
-            min="0.01"/>
+            min="0.01"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)} />
+
         
             
             <input  
             min={1} type=
             "number" 
             name='quantity' 
-            placeholder='Digite a quantidade do estoque' />
+            placeholder='Digite a quantidade do estoque'
+            value={quantity}
+            onChange={(e) => setQuantity(e.value.target)}
+            />
 
           
           <input
           className='button send' 
           type="submit" 
           value="cadastrar"/>
-          <input className='button cancel' type="button" value="cancelar" />
+          <input className='button cancel' type="button" value="cancelar"  onClick={handleClose}/>
           
          </form>
       
