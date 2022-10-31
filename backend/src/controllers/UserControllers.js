@@ -42,10 +42,10 @@ class UserController {
 
       return res.status(201).json(newUser);
 
-    } catch (error) {
+    } catch (error) { 
       console.error(error);
       return res.status(500).json({ error: "interval server error" });
-    }
+    } 
   }
 
 

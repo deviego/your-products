@@ -1,0 +1,190 @@
+.main .nav{
+    margin:  auto;
+
+    display: flex;
+    align-items: center;
+    background-color: #021622;
+    color: #f1f1f1;
+    border-bottom: 5px solid #830e0e;
+    padding: 1rem;
+
+    justify-content: space-between;
+}
+.nav .Book-icon{
+    font-size: 35px;
+    margin-right: px;
+}
+
+.nav .button-logout{
+    margin-right: 15px;
+    padding: 3px;
+    cursor: pointer;
+    transform: initial;
+    transition: .5s; 
+    border: 2px;
+}
+.nav .button-logout:hover{
+
+    background-color: #a11d1d;
+    color: white;
+    border:  none;
+       
+}
+
+.main .nav .logout-icon{
+    font-size: 20px;
+    
+}
+
+
+
+.main .search{
+    width: 600px;
+    display: flex;
+    align-items: center;
+
+    max-width: 480px;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 3px;
+    
+
+}
+.search input{
+    padding: 8px;
+    font-weight: 600;
+    border-radius: 5px;
+}
+.search .search-button{
+    padding: 2px;
+    border-radius: 5px;
+    margin-left: -25px;
+
+    background-color: #f1f1f1;
+    color: floralwhite;
+    border: none;
+
+    cursor: pointer;
+}
+.search .search-icon{
+    color: #021622;
+    font-size: 24px;
+}
+.search .clear-button{
+    padding: 4px;
+    border-radius: 10px;
+    margin-left: 5px;
+
+    background-color: #930f0f;
+    color: floralwhite;
+
+    cursor: pointer;
+}
+.search .clear-button:hover{
+    background-color: #a11d1d;
+}
+
+
+.main label{
+    flex-shrink: 0;
+}
+
+.main input{
+    width: 100%;
+}
+.main .Products{
+    width: 100vw;
+    max-width:480px;
+    margin: 1rem auto;
+
+}
+.main .title{
+    font-size: 1.4rem;
+    text-align: center;
+
+}
+.main .list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+ .main .Products .item{
+    width:550px;
+    color: #f1f1f1;
+    margin-bottom: 5px;
+    display: flex;
+   align-items: center;
+    
+    background-color: #021622eb;
+    padding: 15px;
+    border-radius: 5px;
+    border-bottom: 3px solid #930f0f;
+}
+
+
+.Products .item .info{
+    
+    flex: 1;
+}
+.Products .item .name{  
+    font-size: 1.5rem;
+
+}
+
+.trash-icon{
+   color: white;
+}
+
+
+.loading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 2rem;
+}
+
+.main .new{
+    width: 400px;
+    display: flex;
+    margin:  auto;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    
+    
+    padding: 2rem 0 4rem;
+
+}
+.new .add-button{
+    
+    cursor: pointer;
+    transform: initial;
+    transition: .5s; 
+    border: 2px solid #055c057f
+}
+.new .add-button:hover{
+    background-color: #1f921feb;
+    border: 2px solid #1f921feb; 
+    color: white;      
+}
+
+.new input{
+    padding: 7px;
+    margin-right: 5px;
+}
+
+.item button{
+    background-color: #930f0f;
+    border: none;
+    border-radius: 5px;
+    padding: 3px;
+    display: flex;
+
+    cursor: pointer;
+
+}
+

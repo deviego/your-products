@@ -1,0 +1,90 @@
+.logo{
+    display: flex;
+    align-items: center;
+}
+.login .Book-icon{
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+    padding: 0 2rem;
+
+    
+
+}
+.login .form{
+    text-align: center;
+    background-color: #f1f1f1;
+    width: 100%;
+    padding: 0 5rem;
+    max-width: 480px;
+    
+    background-color: #021622;
+    color: white;
+
+    border-radius: 1rem;
+
+}
+.login .form h1{
+    margin-bottom: 3rem;
+}
+.field label{
+    display: block;
+    margin: 3px 0;
+
+}
+
+.field input{
+    width: 100%;
+    padding: 15px;
+    margin: .5rem;
+
+    font-weight: 600;
+
+    border-radius: 5px;
+}
+
+.actions{
+    display: flex;
+    justify-content: center;
+   
+    margin: 2rem;
+}
+.actions button{
+    font-size: 16px;
+    
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    padding:10px;
+    width: 8rem;
+
+
+    background-color: rgb(49, 131, 49);
+    color: white;
+    border: none;
+
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+.actions button:hover{
+    background-color: green;
+}
+
+button .login-icon{
+    margin-left: 5px;
+}
+
