@@ -159,18 +159,6 @@
     padding: 2rem 0 4rem;
 
 }
-.new .add-button{
-    
-    cursor: pointer;
-    transform: initial;
-    transition: .5s; 
-    border: 2px solid #055c057f
-}
-.new .add-button:hover{
-    background-color: #1f921feb;
-    border: 2px solid #1f921feb; 
-    color: white;      
-}
 
 .new input{
     padding: 7px;
@@ -188,3 +176,9 @@
 
 }
 
+.modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem;
+}

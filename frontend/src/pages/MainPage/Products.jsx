@@ -2,12 +2,14 @@ import React, { useContext, useState } from "react";
 import AddIcon from '@mui/icons-material/Add';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { destroyProduct } from "../../services/api";
+import BasicModal from "../../components/Modal/Modal";
 
 
 
 
 export function Products({ products, onNewProduct, onUpdateProduct }) {
   const [newProduct, setNewProduct] = useState();
+  const [modalIsOpen, setModalIsOpen] = useState(true)
 
   const handleDeleteProduct= async (product)=> {
     console.log("seus dados", product?.userId, product?._id)
@@ -16,21 +18,14 @@ export function Products({ products, onNewProduct, onUpdateProduct }) {
 
   return (
     <div className="Products">
-      <h2 className="title">Produtos</h2>
-      <ul className="new">
+    
+      <div className="modal">
        
-        <input
-          type="url"
-          name="new-product"
-          id="new-product"
-          value={setNewProduct}
-          placeholder='
-          Criar novo produto produto'
-          onChange={(e) => setNewRepo(e.target.value)}
-        />
-        <button className="add-button" onClick={() => onNewProduct(newProduct)}><AddIcon className="icon-add"/></button>
-      </ul>
+      <BasicModal/>
+      
+      </div>
       <ul className="list">
+        <h2>Seus Produtos cadastrados: </h2>
         <div className="card">
         {products?.map((product) => (
           <li className="item" key={product._id}>
@@ -57,7 +52,6 @@ export function Products({ products, onNewProduct, onUpdateProduct }) {
         ))}
         </div>
       </ul>
-
       
     </div>
   );

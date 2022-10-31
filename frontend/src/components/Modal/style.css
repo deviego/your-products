@@ -1,0 +1,56 @@
+.buttonModal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    font-size: 16px;
+
+    border-radius: 8px;
+    color:white;
+    background-color: #021622eb;
+
+}
+
+.icon-add{
+    margin-left: 6px;
+}
+.box{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  
+}
+
+form input{
+    padding: 12px;
+    width: 400px;
+    margin-bottom: 8px;
+    margin-top: 3px;
+}
+
+.button{
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+
+    border-radius: 6px;
+    border: none;
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.button.send{
+    background-color: rgb(7, 117, 7);
+}
+.button.send:hover{
+    background-color: green;
+}
+.button.cancel{
+    background-color: #930f0f;
+    
+}
+
+.button.cancel:hover{
+    background-color: #a11d1d;
+}

@@ -20,7 +20,6 @@ export function MainPage() {
         
         const response = await getProduct(user?.id, query);
         setProducts(response.data);
-        console.log(response)
         setLoading(false);
       } catch (err) {
         console.error(err);
