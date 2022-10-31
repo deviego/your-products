@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import AddIcon from '@mui/icons-material/Add';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { destroyProduct } from "../../services/api";
 
 
 
 
-export function Products({ products, onDeleteRepo, onNewRepo, onUpdateProduct }) {
+export function Products({ products, onNewProduct, onUpdateProduct }) {
   const [newProduct, setNewProduct] = useState();
+
+  const handleDeleteProduct= async (product)=> {
+    console.log("seus dados", product?.userId, product?._id)
+    await destroyProduct(product?.userId, product?._id);
+  }
 
   return (
     <div className="Products">
@@ -22,7 +28,7 @@ export function Products({ products, onDeleteRepo, onNewRepo, onUpdateProduct })
           Criar novo produto produto'
           onChange={(e) => setNewRepo(e.target.value)}
         />
-        <button className="add-button" onClick={() => onNewRepo(newProduct)}><AddIcon className="icon-add"/></button>
+        <button className="add-button" onClick={() => onNewProduct(newProduct)}><AddIcon className="icon-add"/></button>
       </ul>
       <ul className="list">
         <div className="card">
@@ -30,23 +36,23 @@ export function Products({ products, onDeleteRepo, onNewRepo, onUpdateProduct })
           <li className="item" key={product._id}>
             <div className="info">
               <div className="name">
-                {product.name}
+                Nome: {product.name}
               </div>
               <div className="description">
-                <p>{product.description}</p>
+                <p>Descrição: {product.description}</p>
                 
               </div>
               <div className="amount">
-                <p>{product.amount}</p>
+                <p>Preço: R$ {product.amount}</p>
                 
               </div>
               <div className="quantity">
-                <p>{product.quantity}</p>
+                <p>Quantidade em estoque: {product.quantity}</p>
                 
               </div>
             </div>
             
-            <button  onClick={() => onDeleteRepo(product)}><HighlightOffIcon className="trash-icon"/></button>
+            <button  onClick={() => handleDeleteProduct(product)}><HighlightOffIcon className="trash-icon"/></button>
           </li>
         ))}
         </div>

@@ -77,7 +77,6 @@ export function MainPage() {
         
         <Products
           products={products}
-          onDeleteRepo={handleDeleteRepo}
           onNewRepo={handleNewRepo}
         />
       </div>

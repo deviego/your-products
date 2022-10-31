@@ -93,7 +93,7 @@ class ProductController {
       const user = await User.findById(user_id);
 
       if (!user) {
-        return res.status(404).json();
+        return res.status(404).json({message: "sem usuario"});
       }
 
       const product = await Product.findOne({
@@ -102,10 +102,10 @@ class ProductController {
       })
 
       if (!product) {
-        return res.status(404).json();
+        return res.status(404).json({message: "sem produto"});
       }
-      await product.findByIdAndDelete({_id: _id})
-      return res.status(200).json()
+      await product.delete({_id: _id})
+      return res.status(200).json({message: "deletado"})
 
 
     } catch (error) {
