@@ -10,7 +10,7 @@ import { AuthContext } from "../../context/auth";
 
 
 export function MainPage() {
-  const {user, logout} = useContext(AuthContext)
+  const {user} = useContext(AuthContext)
   const [loading, setLoading] = useState(true);
   const [loadingError, setLoadingError] = useState(false);
   const [products, setProducts] = useState([]);

@@ -1,10 +1,12 @@
 
-import * as React from 'react';
+import React, { useContext } from 'react';
 import Box from '@mui/material/Box';
-import AddIcon from '@mui/icons-material/Add';
-import Typography from '@mui/material/Typography';
+import AddIcon from '@mui/icons-material/Add'
 import Modal from '@mui/material/Modal';
 import './style.css'
+import { createProduct } from '../../services/api';
+import { AuthContext } from "../../context/auth";
+
 
 const style = {
   
@@ -20,26 +22,36 @@ const style = {
 };
 
 export default function BasicModal() {
-  const [name, setName] = React.useState()
-  const [description, setDescription] = React.useState()
-  const [amount, setAmount] = React.useState()
-  const [quantity, setQuantity] = React.useState()
 
-  const [open, setOpen] = React.useState(true);
+  const {user} = useContext(AuthContext)
+
+
+  
+  const [name, setName] = React.useState('')
+  const [description, setDescription] = React.useState('')
+  const [amount, setAmount] = React.useState('')
+  const [quantity, setQuantity] = React.useState(0)
+
+  const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
 
-  const sendInfo = (e) => {
+  const sendInfo = async (e) => {
     e.preventDefault()
    
+    if(name == undefined | '' || description ==  undefined | "" || amount == undefined |""  ||  quantity == 0 | undefined) {
 
-    if(name == "" || description === ""|| amount === "" || quantity === 0) {
       alert("Por favor preencha todos os campos")
-      console.log("tete")
       return
     }
-    console.log(name)
+    
+    try {
+      await createProduct(user?.id, name, description, amount, quantity);
+      console.log("product cirado");
+    } catch (error) {
+      console.error(error);
+    }
   
   }
 
@@ -94,7 +106,7 @@ export default function BasicModal() {
             name='quantity' 
             placeholder='Digite a quantidade do estoque'
             value={quantity}
-            onChange={(e) => setQuantity(e.value.target)}
+            onChange={(e) => setQuantity(e.target.value)}
             />
 
           

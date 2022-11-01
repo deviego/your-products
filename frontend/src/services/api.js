@@ -4,6 +4,12 @@ export const api = axios.create({
     baseURL: 'http://localhost:5100'
 })
 
+export const createSession = async(email, password) => {
+    return api.post(`/sessions`, {email, password})
+}
+
+
+
 export const getProduct = async(userId, query) => {
     let url = `/users/${userId}/products/`
     if(query !== '') {
@@ -15,8 +21,9 @@ export const getProduct = async(userId, query) => {
 
 }
 
-export const createSession = async(email, password) => {
-    return api.post(`/sessions`, {email, password})
+export const createProduct = async (userId,name, description, amount, quantity) => {
+    let url = `/users/${userId}/products/`
+    return api.post(url, {name, description, amount, quantity})
 }
 
 

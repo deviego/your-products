@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import AddIcon from '@mui/icons-material/Add';
+import React, { useState } from "react";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { destroyProduct } from "../../services/api";
 import BasicModal from "../../components/Modal/Modal";
@@ -7,9 +6,7 @@ import BasicModal from "../../components/Modal/Modal";
 
 
 
-export function Products({ products, onNewProduct, onUpdateProduct }) {
-  const [newProduct, setNewProduct] = useState();
-  const [modalIsOpen, setModalIsOpen] = useState(true)
+export function Products({ products}) {
 
   const handleDeleteProduct= async (product)=> {
     console.log("seus dados", product?.userId, product?._id)
