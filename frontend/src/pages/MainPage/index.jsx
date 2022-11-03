@@ -15,10 +15,10 @@ export function MainPage() {
   const [loadingError, setLoadingError] = useState(false);
   const [products, setProducts] = useState([]);
 
-  const loadData = async (query = " ") => {
+  const loadData = async () => {
       try {
         
-        const response = await getProduct(user?.id, query);
+        const response = await getProduct(user?.id);
         setProducts(response.data);
         setLoading(false);
       } catch (err) {
@@ -32,27 +32,6 @@ export function MainPage() {
     (async () => loadData())();
   }, []);
 
-  
- 
-
-  const handleNewRepo = async (url) => {
-    try {
-      await createRepository(user?.id, url);
-      await loadData()
-      console.log("Repo criado");
-    } catch (error) {
-      console.error(error);
-      setLoadingError(true)
-    }
-  };
-
-  const handleDeleteRepo = async (repository) => {
-    console.log("Repo deletado", repository);
-
-    await destroyRepository(repository?.userId, repository?._id);
-   
-    await loadData()
-  };
 
 
   if(loadingError){
@@ -62,7 +41,6 @@ export function MainPage() {
   }
 
   if(loading) {
-    console.log("aqui")
     return(
       <div className="loading"> Carregando dados...</div>
       
@@ -76,7 +54,6 @@ export function MainPage() {
         
         <Products
           products={products}
-          onNewRepo={handleNewRepo}
         />
       </div>
     </>

@@ -104,7 +104,7 @@ class ProductController {
       if (!product) {
         return res.status(404).json({message: "sem produto"});
       }
-      await product.delete({_id: _id})
+      await Product.findByIdAndDelete({_id: _id})
       return res.status(200).json({message: "deletado"})
 
 
@@ -115,4 +115,4 @@ class ProductController {
   }
 }
 
-export default new ProductController();
+export default new ProductController(); 
