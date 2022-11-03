@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import { destroyProduct } from "../../services/api";
+import { destroyProduct, getProduct } from "../../services/api";
 import BasicModal from "../../components/Modal/Modal";
 
 
@@ -8,9 +8,14 @@ import BasicModal from "../../components/Modal/Modal";
 
 export function Products({ products}) {
 
+ const refreshPage = () => {
+    window.location.reload()
+ } 
+
   const handleDeleteProduct= async (product)=> {
-    console.log("seus dados", product?.userId, product?._id)
     await destroyProduct(product?.userId, product?._id);
+    alert(`Produto ${product?.name} DELETADO !`)
+    refreshPage()
   }
 
   return (
