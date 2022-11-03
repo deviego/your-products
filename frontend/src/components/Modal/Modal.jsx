@@ -79,7 +79,8 @@ export default function BasicModal() {
             <input
               type="text"
               name="description"
-              placeholder="Digite o nome do produto"
+              maxLength={40}
+              placeholder="Digite a descrição do produto"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
